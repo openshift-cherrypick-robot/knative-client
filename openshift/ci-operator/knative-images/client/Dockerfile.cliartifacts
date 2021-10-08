@@ -1,9 +1,7 @@
 FROM registry.ci.openshift.org/ocp/ubi-minimal:8 AS packager
 WORKDIR /opt/app-root/src/go/src/github.com/knative/client
 
-RUN microdnf install -y zip tar gzip
 ADD package_cliartifacts.sh LICENSE kn-*-* ./
-
 RUN microdnf install -y zip tar gzip && \
     bash package_cliartifacts.sh
 
